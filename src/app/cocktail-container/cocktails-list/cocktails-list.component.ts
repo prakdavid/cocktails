@@ -19,10 +19,4 @@ export class CocktailsListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  cocktailClick(index : number) : void {
-    this.activeCocktail = index;
-    this.cocktailService.selectCocktail(index);
-  }
-
 }

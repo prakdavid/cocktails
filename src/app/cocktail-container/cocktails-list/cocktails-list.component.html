@@ -1,15 +1,13 @@
-<div class="row">
+<div class="row" style="width: 300px;">
     <div class="list-group col-12">
         <a 
-            href="#" 
-            [appActive]="i === activeCocktail"
             class="list-group-item list-group-item-action" 
             *ngFor="let cocktail of cocktails; let i = index;" 
-            (click)="cocktailClick(i)"
+            [routerLink]="[i]"
         >{{ cocktail.name }}</a>
     </div>
 </div>
 <hr>
 <div class="row">
-    <button class="btn btn-success">Ajouter un coctail</button>
+    <button class="btn btn-success" routerLink="new">Ajouter un cocktail</button>
 </div>

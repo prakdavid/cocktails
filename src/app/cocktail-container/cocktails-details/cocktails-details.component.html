@@ -14,7 +14,14 @@
 </div>
 <hr>
 <div class="row">
-    <button class="btn btn-success">
-        Editer cocktail
-    </button>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let ingredient of cocktail.ingredients">
+            {{ ingredient.name }} <span class="badge badge-default badge-pill ml-auto"> {{ ingredient.quantity }}</span>
+        </li>
+    </ul>
+</div>
+<hr>
+<div class="row">
+    <button class="btn btn-success" [routerLink]="['/cocktails', index, 'edit']">Editer cocktail</button>
+    <button class="btn btn-warning ml-auto" (click)="addPanier(cocktail.ingredients)">Ajouter au panier</button>
 </div>

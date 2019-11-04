@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cocktail } from '../../shared/models/cocktail.model';
 import { CocktailService } from "../../shared/services/cocktail.service";
+import { Ingredient } from 'src/app/shared/models/ingredient.model';
+import { PanierService } from 'src/app/shared/services/panier.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-cocktails-details',
@@ -9,12 +12,24 @@ import { CocktailService } from "../../shared/services/cocktail.service";
 })
 export class CocktailsDetailsComponent implements OnInit {
   public cocktail : Cocktail;
-  constructor(private cocktailService : CocktailService) { }
+  public index : number  = 0;
+  constructor(
+    private cocktailService : CocktailService,
+    private panierService : PanierService,
+    private router : Router,
+    private activatedRoute : ActivatedRoute) { 
+
+    }
 
   ngOnInit() {
-    this.cocktailService.cocktail.subscribe( (cocktail : Cocktail) => {
-      this.cocktail = cocktail;
-    });
+    this.activatedRoute.paramMap.subscribe( (value : ParamMap) => {
+      this.index = Number(value.get('index'));
+      this.cocktail=  this.cocktailService.getCocktail(this.index);
+  } );
   }
 
+  addPanier(ingredients : Ingredient[]) : void {
+    this.panierService.addPanier(ingredients);
+    this.router.navigate(['panier']);
+  }
 }
