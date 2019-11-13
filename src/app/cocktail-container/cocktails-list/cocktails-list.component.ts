@@ -5,9 +5,10 @@ import { CocktailService } from "../../shared/services/cocktail.service";
 @Component({
   selector: 'app-cocktails-list',
   templateUrl: './cocktails-list.component.html',
-  styleUrls: ['./cocktails-list.component.css']
+  styleUrls: ['./cocktails-list.component.css'],
 })
 export class CocktailsListComponent implements OnInit {
+  public serach: string = '';
   public cocktails : Array<Cocktail>;
   public activeCocktail : number = 0
 

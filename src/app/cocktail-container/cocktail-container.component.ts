@@ -12,5 +12,12 @@ export class CocktailContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let toto = true;
+    console.log(toto);
+    if (true) {
+      let toto = false;
+      console.log(toto);
+    }
+    console.log(toto);
   }
 }

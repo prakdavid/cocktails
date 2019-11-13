@@ -1,8 +1,9 @@
 <div class="row" style="width: 300px;">
     <div class="list-group col-12">
+        <input tpe="texte" class="from-control" [(ngModel)]="search" placeholder="Chercher"/>
         <a 
             class="list-group-item list-group-item-action" 
-            *ngFor="let cocktail of cocktails; let i = index;" 
+            *ngFor="let cocktail of cocktails | filter: search; let i = index;" 
             [routerLink]="[i]"
         >{{ cocktail.name }}</a>
     </div>

@@ -24,7 +24,9 @@ export class CocktailsDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( (value : ParamMap) => {
       this.index = Number(value.get('index'));
-      this.cocktail=  this.cocktailService.getCocktail(this.index);
+      this.cocktailService.getCocktail(this.index).subscribe( (cocktail: Cocktail)  => {
+        this.cocktail = cocktail;
+      });
   } );
   }
 

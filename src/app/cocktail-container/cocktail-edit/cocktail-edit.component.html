@@ -1,1 +1,32 @@
-<p>cocktail-edit works!</p>
+<form [formGroup]="cocktailForm" (ngSubmit)="createCocktail()">
+    <div class="form-group">
+        <label>Nom: </label>
+        <input formControlName="name" class="form-control" type='text'/>
+    </div>
+    <div class="form-group">
+        <label>Image: </label>
+        <input formControlName="image" class="form-control" type='text'/>
+    </div>
+    <div class="form-group">
+        <label>Description: </label>
+        <textarea formControlName="desc" class="form-control"></textarea>
+    </div>
+    <hr>
+    <button type="button" class="btn btn-success" (click)="addIngredient()">Ajouter ingredient</button>
+    <!-- <div formArrayName="ingredients" >
+        <div [formGroup]="ingredient" class="form-group row" *ngFor="let ingredient of cocktailForm.get('ingredients').controls">
+            <input formControlName='name' placeholder="name" class="form-control col-8" type="text" />
+            <input formControlName='quantity' placeholder="quantity" class="form-control col-4" type="text" />
+        </div>
+    </div> -->
+    <div formArrayName="ingredients"
+    *ngFor="let item of cocktailForm.get('ingredients').controls; let i = index;">
+    <div [formGroupName]="i">
+        <input formControlName="name" placeholder="Item name">
+        <input formControlName="quantity" placeholder="Item quantity">
+    </div>
+</div>
+    <hr>
+    <button class="btn btn-secondary" [routerLink]="['../']">Annuler</button>
+    <button class="btn btn-primary" [disabled]="cocktailForm.invalid">Sauvegarder</button>
+</form>
