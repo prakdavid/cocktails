@@ -13,11 +13,11 @@ export class CocktailsListComponent implements OnInit {
   public activeCocktail : number = 0
 
   constructor(private cocktailService : CocktailService) {
-    cocktailService.cocktails.subscribe( (cocktails : Cocktail[]) => {
-      this.cocktails = cocktails;
-    });
   }
 
   ngOnInit() {
+    this.cocktailService.cocktails.subscribe( (cocktails : Cocktail[]) => {
+      this.cocktails = cocktails;
+    });
   }
 }
