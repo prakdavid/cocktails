@@ -8,7 +8,7 @@ import { CocktailService } from "../../shared/services/cocktail.service";
   styleUrls: ['./cocktails-list.component.css'],
 })
 export class CocktailsListComponent implements OnInit {
-  public serach: string = '';
+  public search: string = '';
   public cocktails : Array<Cocktail>;
   public activeCocktail : number = 0
 
